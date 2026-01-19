@@ -6,9 +6,11 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:08 by stmuller          #+#    #+#             */
-/*   Updated: 2026/01/17 18:55:36 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/01/19 21:02:22 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <minitalk.h>
 
 static int	ft_not_valid(int argnum, char **argv){
 	int	i;
@@ -25,6 +27,39 @@ static int	ft_not_valid(int argnum, char **argv){
 	return (0);
 }
 
+static void	send_len(int pid, int str_len)
+{
+	int	i;
+
+	i = 0;
+	while (i < 32)
+	{
+		if (str_len & 0x01)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		str_len = str_len >> 1;
+		i++;
+		usleep(100);
+	}
+	
+}
+static void	send_char(int pid, unsigned char c)
+{
+	int	i;
+
+	i = 0;
+	while (i < 8)
+	{
+		if (c & 0x01)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		c = c >> 1;
+		usleep(100);
+	}
+}
+
 int	main(int argnum, char **argv){
 	int		pid;
 	int		i;
@@ -39,6 +74,11 @@ int	main(int argnum, char **argv){
 	str = argv[2];
 	str_len = ft_strlen(str);
 	send_len(pid, str_len);
-	
-	
+	i = 0;
+	while (str[i])
+	{
+		send_char(pid, str[i]);
+		i++;
+	}
+	send_char(pid, str[i]);
 }
