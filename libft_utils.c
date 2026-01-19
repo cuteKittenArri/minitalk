@@ -6,11 +6,11 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:17 by stmuller          #+#    #+#             */
-/*   Updated: 2026/01/19 21:48:29 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/01/19 23:44:03 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minitalk.h>
+#include "minitalk.h"
 
 int	ft_strlen(const char *str)
 {

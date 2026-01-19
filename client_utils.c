@@ -6,11 +6,11 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:08 by stmuller          #+#    #+#             */
-/*   Updated: 2026/01/19 21:02:22 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/01/20 00:18:14 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minitalk.h>
+#include "minitalk.h"
 
 static int	ft_not_valid(int argnum, char **argv){
 	int	i;
@@ -57,6 +57,7 @@ static void	send_char(int pid, unsigned char c)
 			kill(pid, SIGUSR2);
 		c = c >> 1;
 		usleep(100);
+		i++;
 	}
 }
 

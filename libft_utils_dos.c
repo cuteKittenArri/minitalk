@@ -6,12 +6,26 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:41:10 by stmuller          #+#    #+#             */
-/*   Updated: 2026/01/19 21:52:11 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/01/19 23:46:37 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <minitalk.h>
+#include "minitalk.h"
 
+void	ft_bzero(void *s, size_t n)
+{
+	size_t			i;
+	unsigned char	*r;
+
+	r = s;
+	i = 0;
+	while (i < n)
+	{
+		*r = 0;
+		r++;
+		i++;
+	}
+}
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*array;
@@ -34,20 +48,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return (array);
 }
 
-void	ft_bzero(void *s, size_t n)
-{
-	size_t			i;
-	unsigned char	*r;
-
-	r = s;
-	i = 0;
-	while (i < n)
-	{
-		*r = 0;
-		r++;
-		i++;
-	}
-}
 int	ft_atoi(const char *nptr)
 {
 	int	result;
@@ -81,5 +81,5 @@ int	ft_power_to(int nb, int power)
 	else if (power == 0)
 		return (1);
 	else
-		return (nb * ft_recursive_power(nb, power - 1));
+		return (nb * ft_power_to(nb, power - 1));
 }
