@@ -6,7 +6,7 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:08 by stmuller          #+#    #+#             */
-/*   Updated: 2026/01/20 00:18:14 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/01/20 01:39:28 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static int	ft_not_valid(int argnum, char **argv){
 	return (0);
 }
 
-static void	send_len(int pid, int str_len)
+static void	send_len(int pid, size_t str_len)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (i < 32)
+	while (i < (sizeof(size_t) * 8))
 	{
 		if (str_len & 0x01)
 			kill(pid, SIGUSR1);
@@ -65,7 +65,7 @@ int	main(int argnum, char **argv){
 	int		pid;
 	int		i;
 	char	*str;
-	int		str_len;
+	size_t	str_len;
 
 	if (ft_not_valid(argnum, argv))
 		return (-1);

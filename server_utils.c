@@ -6,7 +6,7 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:20 by stmuller          #+#    #+#             */
-/*   Updated: 2026/01/20 00:13:52 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/01/20 01:50:40 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	ft_receive_len(int *str_len_recived, int signal, char **str, int *bit_at)
 {
-	static int	str_len = 0;
+	static size_t	str_len = 0;
 	
 	if (signal == SIGUSR1)
 		str_len = ft_power_to(2, *bit_at);
-	if (*bit_at == 31)
+	if (*bit_at == (sizeof(size_t) * 8) - 1)
 	{
 		*str_len_recived = 1;
-		*str = ft_calloc(str_len + 1, sizeof(char));
+		*str = ft_calloc(str_len + 2, sizeof(char));
 		*bit_at = 0;
 		str_len = 0;
 		return ;

@@ -6,7 +6,7 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:41:10 by stmuller          #+#    #+#             */
-/*   Updated: 2026/01/19 23:46:37 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/01/20 01:42:11 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	ft_atoi(const char *nptr)
 	return (result * minus);
 }
 
-int	ft_power_to(int nb, int power)
+size_t	ft_power_to(size_t nb, size_t power)
 {
 	if (power < 0)
 		return (0);
