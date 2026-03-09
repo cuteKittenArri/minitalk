@@ -6,7 +6,7 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:08 by stmuller          #+#    #+#             */
-/*   Updated: 2026/01/20 01:39:28 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/02/04 23:28:18 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static void	send_char(int pid, unsigned char c)
 		else
 			kill(pid, SIGUSR2);
 		c = c >> 1;
-		usleep(100);
 		i++;
+		usleep(100);
 	}
 }
 
