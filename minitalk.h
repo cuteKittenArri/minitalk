@@ -6,7 +6,7 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:16:24 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/09 18:19:29 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/09 19:42:03 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ size_t	ft_power_to(size_t nb, size_t power);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_putstr_fd(char *s, int fd);
 
-struct state
+struct s_state
 {
 	volatile sig_atomic_t	signal;
 	volatile sig_atomic_t	new_signal;

@@ -6,7 +6,7 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:41:10 by stmuller          #+#    #+#             */
-/*   Updated: 2026/01/20 01:42:11 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/09 19:53:05 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_bzero(void *s, size_t n)
 		i++;
 	}
 }
+
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*array;

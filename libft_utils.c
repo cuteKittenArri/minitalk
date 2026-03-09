@@ -6,7 +6,7 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:17 by stmuller          #+#    #+#             */
-/*   Updated: 2026/01/20 01:39:45 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/09 19:52:53 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ char	*ft_strchr(int c, const char *s)
 		return ((char *)s);
 	return (0);
 }
-
 
 void	ft_putnbr_fd(long n, int fd)
 {

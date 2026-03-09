@@ -6,29 +6,34 @@
 #    By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/09 17:59:21 by stmuller          #+#    #+#              #
-#    Updated: 2026/03/09 18:25:36 by stmuller         ###   ########.fr        #
+#    Updated: 2026/03/09 19:12:02 by stmuller         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CLIENT := client
-SERVER := server
+CLIENT_NAME := client
+SERVER_NAME := server
 CC := cc
 CFLAGS := -Wall -Werror -Wextra
 CLIENT_SRC := client_utils.c libft_utils_dos.c libft_utils.c
 SERVER_SRC := server_utils.c libft_utils_dos.c libft_utils.c
+CLIENT_OBJ := $(CLIENT_SRC:.c=.o)
+SERVER_OBJ := $(SERVER_SRC:.c=.o)
 HEAD := minitalk.h
 
-all: $(CLIENT) $(SERVER)
+all: client server
 
-$(CLIENT):
-	$(CC) $(CFLAGS) $(CLIENT_SRC)
+client: $(CLIENT_OBJ)
+	$(CC) $(CFLAGS) $(CLIENT_OBJ) -o $(CLIENT_NAME)
 
-$(SERVER):
-	$(CC) $(CFLAGS) $(SERVER_SRC)
+server: $(SERVER_OBJ)
+	$(CC) $(CFLAGS) $(SERVER_OBJ) -o $(SERVER_NAME)
 
 clean:
-	rm -rf $(CLIENT) $(SERVER)
+	rm -rf $(SERVER_OBJ) $(CLIENT_OBJ)
+
+fclean: clean
+	rm -rf $(CLIENT_NAME) $(SERVER_NAME)
 
 re: clean all
 
-.PHONY: all clean re
+.PHONY: all clean fclean re
