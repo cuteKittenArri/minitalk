@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arri <arri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:16:24 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/09 14:56:32 by arri             ###   ########.fr       */
+/*   Updated: 2026/03/09 18:19:29 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	MINITALK_H
+#ifndef MINITALK_H
 # define MINITALK_H
-
 
 # include <signal.h>
 # include <stdlib.h>
@@ -38,10 +37,6 @@ struct state
 	int						bit_i;
 	int						curr_char;
 	int						len_recived;
-}
-
+};
 
 #endif
-
-
-
