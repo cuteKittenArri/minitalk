@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arri <arri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:16:24 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/09 01:26:12 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/09 14:56:32 by arri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	MINITALK_H
 # define MINITALK_H
 
-# define _POSIX_C_SOURCE 200809L
 
 # include <signal.h>
 # include <stdlib.h>
@@ -28,7 +27,7 @@ size_t	ft_power_to(size_t nb, size_t power);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_putstr_fd(char *s, int fd);
 
-typedef struct state
+struct state
 {
 	volatile sig_atomic_t	signal;
 	volatile sig_atomic_t	new_signal;
@@ -39,7 +38,7 @@ typedef struct state
 	int						bit_i;
 	int						curr_char;
 	int						len_recived;
-};
+}
 
 
 #endif
