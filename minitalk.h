@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arri <arri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:16:24 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/09 19:42:03 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/10 12:44:54 by arri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*ft_strchr(int c, const char *s);
+char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *str);
 int		ft_atoi(const char *nptr);
 void	ft_putnbr_fd(long n, int fd);

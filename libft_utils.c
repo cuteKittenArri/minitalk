@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arri <arri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:17 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/09 19:52:53 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/10 12:44:41 by arri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strchr(int c, const char *s)
+char	*ft_strchr(const char *s, int c)
 {
 	unsigned char	a;
 

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   server_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arri <arri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:20 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/09 19:52:31 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/10 12:43:34 by arri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include <stdio.h>
 
 static struct s_state	g_server;
 

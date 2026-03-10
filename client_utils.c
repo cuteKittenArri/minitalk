@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arri <arri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:08 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/09 19:48:51 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/10 12:45:34 by arri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	ft_not_valid(int argnum, char **argv)
 		return (1);
 	while (argv[1][i])
 	{
-		if (!ft_strchr(argv[1][i], "0123456789"))
+		if (!ft_strchr("0123456789", argv[1][i]))
 			return (1);
 		i++;
 	}

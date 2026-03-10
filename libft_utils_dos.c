@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft_utils_dos.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arri <arri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 21:41:10 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/09 19:53:05 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/10 12:43:52 by arri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,4 @@ int	ft_atoi(const char *nptr)
 		nptr++;
 	}
 	return (result * minus);
-}
-
-size_t	ft_power_to(size_t nb, size_t power)
-{
-	if (power < 0)
-		return (0);
-	else if (power == 0)
-		return (1);
-	else
-		return (nb * ft_power_to(nb, power - 1));
 }
