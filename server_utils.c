@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arri <arri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:20 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/10 12:43:34 by arri             ###   ########.fr       */
+/*   Updated: 2026/03/10 19:35:50 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ static struct s_state	g_server;
 static void	handler(int signal, siginfo_t *info, void *ctx)
 {
 	(void)ctx;
+	if (g_server.client_pid != 0 && g_server.client_pid != info->si_pid)
+	{
+		kill(info->si_pid, SIGUSR1);
+		return ;
+	}
 	g_server.signal = signal;
 	g_server.client_pid = info->si_pid;
 	g_server.new_signal = 1;
@@ -54,6 +59,9 @@ static void	recived_char(void)
 			g_server.str_len = 0;
 			g_server.str_i = 0;
 			g_server.len_recived = 0;
+			kill(g_server.client_pid, SIGUSR2);
+			g_server.client_pid = 0;
+			return ;
 		}
 		g_server.curr_char = 0;
 	}

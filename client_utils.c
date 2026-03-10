@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arri <arri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:08 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/10 12:45:34 by arri             ###   ########.fr       */
+/*   Updated: 2026/03/10 21:24:48 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,13 @@ static volatile sig_atomic_t	g_client;
 static void	r_handler(int sig)
 {
 	(void)sig;
-	g_client = 1;
+	if (sig == SIGUSR2)
+		g_client = 1;
+	else
+	{
+		write(1, "Server Busy!\n", 14);
+		_exit(1);
+	}
 }
 
 static int	ft_not_valid(int argnum, char **argv)
@@ -88,6 +94,7 @@ int	main(int argnum, char **argv)
 	sa.sa_handler = r_handler;
 	sa.sa_flags = SA_RESTART;
 	sigemptyset(&sa.sa_mask);
+	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	pid = ft_atoi(argv[1]);
 	if (pid <= 0)
