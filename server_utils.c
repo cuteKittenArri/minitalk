@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arri <arri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:20 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/12 20:02:01 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/12 21:27:35 by arri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ static void	recived_len(void)
 	if (g_server.bit_i == (int)(sizeof(size_t) * 8))
 	{
 		g_server.str = ft_calloc(g_server.str_len + 2, sizeof(char));
-		//malloc pprotecxtion!!!!!!
+		if (!g_server.str)
+		{
+			write(1, "Memory allocation failed!\n", 26);
+			exit(-1);
+		}
 		g_server.bit_i = 0;
 		g_server.len_recived = 1;
 	}

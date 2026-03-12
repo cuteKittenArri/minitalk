@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
+/*   By: arri <arri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:08 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/12 20:01:38 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/12 21:28:58 by arri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ int	main(int argnum, char **argv)
 	size_t				str_len;
 
 	i = 0;
-	str_len = ft_strlen(argv[2]);
 	if (ft_not_valid(argnum, argv))
 		return (-1);
+	str_len = ft_strlen(argv[2]);
 	sa.sa_handler = r_handler;
 	sa.sa_flags = SA_RESTART;
 	sigemptyset(&sa.sa_mask);
