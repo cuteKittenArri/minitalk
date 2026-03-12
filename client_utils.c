@@ -6,7 +6,7 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:08 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/10 21:24:48 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/12 20:01:38 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ static void	r_handler(int sig)
 	if (sig == SIGUSR2)
 		g_client = 1;
 	else
-	{
-		write(1, "Server Busy!\n", 14);
-		_exit(1);
-	}
+		g_client = -1;
 }
 
 static int	ft_not_valid(int argnum, char **argv)
@@ -44,12 +41,17 @@ static int	ft_not_valid(int argnum, char **argv)
 
 static void	send_bit(int pid, int bit)
 {
+	if (g_client == -1)
+	{
+		write(1, "Server Busy!\n", 14);
+		exit(-1);
+	}
 	g_client = 0;
 	if (bit)
 		kill(pid, SIGUSR1);
 	else
 		kill(pid, SIGUSR2);
-	while (!g_client)
+	while (g_client != 0)
 		usleep(100);
 }
 
