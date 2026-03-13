@@ -6,7 +6,7 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 20:16:24 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/10 18:17:01 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/13 23:03:42 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_putchar_fd(char c, int fd);
 size_t	ft_power_to(size_t nb, size_t power);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_putstr_fd(char *s, int fd);
+void	ft_bzero(void *s, size_t n);
 
 struct s_state
 {
@@ -37,6 +38,7 @@ struct s_state
 	int						bit_i;
 	int						curr_char;
 	int						len_recived;
+	int						idle;
 };
 
 #endif

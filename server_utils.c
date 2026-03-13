@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arri <arri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:20 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/12 21:27:35 by arri             ###   ########.fr       */
+/*   Updated: 2026/03/13 23:27:24 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static void	recived_char(void)
 			g_server.str_len = 0;
 			g_server.str_i = 0;
 			g_server.len_recived = 0;
+			g_server.idle = 0;
 			kill(g_server.client_pid, SIGUSR2);
 			g_server.client_pid = 0;
 			return ;
@@ -72,29 +73,41 @@ static void	recived_char(void)
 	}
 	kill(g_server.client_pid, SIGUSR2);
 }
-
-int	main(void)
+void	sigaction_setter(void)
 {
 	struct sigaction	sa;
 
 	sa.sa_sigaction = handler;
 	sa.sa_flags = SA_RESTART | SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
-	sigaddset(&sa.sa_mask, SIGUSR1);
-	sigaddset(&sa.sa_mask, SIGUSR2);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
+}
+
+int	main(void)
+{
+	g_server.idle = 0;
+	sigaction_setter();
 	ft_putnbr_fd((long)getpid(), 1);
 	ft_putchar_fd('\n', 1);
 	while (1)
 	{
 		if (g_server.new_signal)
 		{
+			g_server.idle = 0;
 			g_server.new_signal = 0;
 			if (!g_server.len_recived)
 				recived_len();
 			else
 				recived_char();
+		} else if (g_server.client_pid != 0)
+		{
+			if (++g_server.idle > 50000)
+			{
+				write(1, "Client Timeout, reseting Buffer!\n", 33);
+				free(g_server.str);
+				ft_bzero(&g_server, sizeof(g_server));
+			}
 		}
 		usleep(100);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arri <arri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:08 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/12 21:28:58 by arri             ###   ########.fr       */
+/*   Updated: 2026/03/13 23:12:59 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,28 @@ static int	ft_not_valid(int argnum, char **argv)
 
 static void	send_bit(int pid, int bit)
 {
+	int timeout;
+	
+	timeout = 0;
 	if (g_client == -1)
 	{
-		write(1, "Server Busy!\n", 14);
-		exit(-1);
+		write(1, "Server Busy!\n", 13);
+		exit(1);
 	}
 	g_client = 0;
 	if (bit)
 		kill(pid, SIGUSR1);
 	else
 		kill(pid, SIGUSR2);
-	while (g_client != 0)
+	while (g_client == 0)
+	{
 		usleep(100);
+		if (++timeout > 20000)
+		{
+			write(1, "Server timeout!\n", 16);
+			exit(1);
+		}
+	}
 }
 
 static void	send_str(int pid, char *str)
