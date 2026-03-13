@@ -6,7 +6,7 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:08 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/13 23:12:59 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/13 23:32:33 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ static int	ft_not_valid(int argnum, char **argv)
 
 static void	send_bit(int pid, int bit)
 {
-	int timeout;
-	
+	int	timeout;
+
 	timeout = 0;
 	if (g_client == -1)
 	{

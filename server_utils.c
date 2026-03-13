@@ -6,7 +6,7 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:20 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/13 23:27:24 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/13 23:32:08 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ static void	recived_char(void)
 	}
 	kill(g_server.client_pid, SIGUSR2);
 }
+
 void	sigaction_setter(void)
 {
 	struct sigaction	sa;
@@ -86,7 +87,6 @@ void	sigaction_setter(void)
 
 int	main(void)
 {
-	g_server.idle = 0;
 	sigaction_setter();
 	ft_putnbr_fd((long)getpid(), 1);
 	ft_putchar_fd('\n', 1);
@@ -100,7 +100,8 @@ int	main(void)
 				recived_len();
 			else
 				recived_char();
-		} else if (g_server.client_pid != 0)
+		}
+		else if (g_server.client_pid != 0)
 		{
 			if (++g_server.idle > 50000)
 			{
