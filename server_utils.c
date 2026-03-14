@@ -6,7 +6,7 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:20 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/13 23:32:08 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/15 00:27:04 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	recived_len(void)
 		if (!g_server.str)
 		{
 			write(1, "Memory allocation failed!\n", 26);
-			exit(-1);
+			exit(EXIT_FAILURE);
 		}
 		g_server.bit_i = 0;
 		g_server.len_recived = 1;

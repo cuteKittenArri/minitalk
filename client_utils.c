@@ -6,7 +6,7 @@
 /*   By: stmuller <stmuller@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 16:50:08 by stmuller          #+#    #+#             */
-/*   Updated: 2026/03/13 23:32:33 by stmuller         ###   ########.fr       */
+/*   Updated: 2026/03/15 00:30:43 by stmuller         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	send_bit(int pid, int bit)
 	if (g_client == -1)
 	{
 		write(1, "Server Busy!\n", 13);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	g_client = 0;
 	if (bit)
@@ -60,7 +60,7 @@ static void	send_bit(int pid, int bit)
 		if (++timeout > 20000)
 		{
 			write(1, "Server timeout!\n", 16);
-			exit(1);
+			exit(EXIT_FAILURE);
 		}
 	}
 }
